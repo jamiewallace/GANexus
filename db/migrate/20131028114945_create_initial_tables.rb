@@ -30,20 +30,22 @@ class CreateInitialTables < ActiveRecord::Migration
       t.string :name 
       t.integer :capacity
       t.timestamps
+    end
 
+    create_table :courses_users do |t|
+      t.integer :course_id
+      t.integer :user_id
     end
   end
 
 
   def down
     drop_table :users
-  end
 
-  def down
     drop_table :courses
-  end
 
-  def down
     drop_table :rooms
+
+    drop_table :courses_users
   end
 end
