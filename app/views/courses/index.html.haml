@@ -1,0 +1,33 @@
+/ = link_to "Courses", courses_path
+/ | 
+/ = link_to "Users", users_path
+/ |
+/ = link_to "Rooms", rooms_path
+%h1 Upcoming courses
+=link_to "Add new course", new_course_path
+- for course in @courses
+  %h2= link_to course.title, course
+  %p Short Description
+  = course.short_desc
+  / %p Long Description
+  / = course.long_desc
+  %p Cost
+  = course.cost
+  %p Start Date
+  = course.start_date
+  %p End Date
+  = course.end_date
+  %p Start Time (each day)
+  = course.start_time
+  %p End Time (each day)
+  = course.end_time
+
+
+  / t.text :long_desc
+  / t.integer :cost
+  / t.integer :time_commit
+  / t.date :start_date
+  / t.date :end_date
+  / t.time :start_time
+  / t.time :end_time
+  / t.string :recurrence

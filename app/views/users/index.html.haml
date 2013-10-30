@@ -1,0 +1,15 @@
+%h1 GA people
+%p= link_to "Add new user", new_user_path
+%p
+- for user in @users
+  %h2= link_to "#{user.first_name} #{user.last_name}", user
+  %p Role:
+  = user.role
+  %p Email:
+  = user.email
+  %p Password
+  = user.password
+  %p Mobile
+  = user.mobile
+  %p ICE mobile
+  = user.ice_mobile

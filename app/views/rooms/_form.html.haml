@@ -1,0 +1,9 @@
+= form_for @room do |f|
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :capacity
+    = f.text_field :capacity
+  %p
+    = f.submit

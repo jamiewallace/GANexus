@@ -1,0 +1,14 @@
+%h1= "#{@user.first_name} #{@user.last_name}"
+= link_to "Delete this user", @user, :confirm => 'Are you sure?', :method => :delete 
+|
+=link_to "Edit this user"#, @user, :method => :
+%p Role:
+= @user.role
+%p Email:
+= @user.email
+%p Password
+= @user.password
+%p Mobile
+= @user.mobile
+%p ICE mobile
+= @user.ice_mobile
