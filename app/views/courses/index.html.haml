@@ -1,19 +1,25 @@
-%h1 Upcoming courses
+%h2.h2 Upcoming courses
 - if can? :manage, @course
   =link_to "Add a new course", new_course_path(@course)
 
 - for course in @courses
-  %h2= link_to course.title, course
-  %p Short Description
+  %h3= link_to course.title, course
+  %p 
+  Short Description:
   = course.short_desc
-  %p Cost
-  = course.cost
-  %p Start Date
+  %p
+  Cost: £
+  =course.cost
+  %p
+  Start Date:
   = course.start_date
-  %p End Date
+  %p
+  End Date:
   = course.end_date
-  %p Start Time (each day)
+  %p
+  Start Time (each day):
   = course.start_time
-  %p End Time (each day)
+  %p
+  End Time (each day):
   = course.end_time
 

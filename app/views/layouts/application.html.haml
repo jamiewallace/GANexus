@@ -6,22 +6,23 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    %header
+    %header.page-header
       %p
         = notice
-      %h1 GANexus - delivering solutioneering scheduling innovation
-      %ul
+      %h1 GANexus
+      %h3 Delivering solutioneering scheduling innovation
+      %ul.nav.left-nav.nav-pills
         %li= link_to('Courses', courses_path)
         %li= link_to('Users', users_path)
         %li= link_to('Rooms', rooms_path)
-      %ul
-        %li
-          - if current_user
-            logged in as #{current_user.first_name} ,
-            = link_to 'Logout', logout_path, method: :delete
-          -else
-            = link_to "Login", login_path
-            or
-            = link_to "Sign up", signup_path
-
+      %div.header
+        %ul.nav.right-nav.nav-pills
+          %li
+            - if current_user
+              logged in as #{current_user.first_name},
+              = link_to 'Logout', logout_path, method: :delete
+            -else
+              = link_to "Login", login_path
+              = link_to "Sign up", signup_path
+%div.main
   = yield

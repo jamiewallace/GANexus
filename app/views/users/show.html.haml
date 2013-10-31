@@ -1,20 +1,24 @@
-%h1= "#{@user.first_name} #{@user.last_name}"
+%h3= "#{@user.first_name} #{@user.last_name}"
 - if can? :manage, @user
   =link_to "Delete this user", @user, :confirm => 'Are you sure?', :method => :delete 
 - if can? :manage, @user
   =link_to "Edit this user", edit_user_path(@user)
 
 
-%p Role:
+%p
+Role:
 = @user.role
-%p Email:
+%p
+Email:
 = @user.email
-/ %p Password
-/ = @user.password
-%p Mobile
+%p 
+Mobile:
 = @user.mobile
-%p ICE mobile
-= @user.ice_mobile
-%h3 Attending these courses:
+- if can? :manage, @user
+  %p
+  ICE mobile:
+  = @user.ice_mobile
+%hr
+%h4 Attending these courses:
 - @user.courses.each do |course|
-  %h3= link_to course.title, course
+  %h4= link_to course.title, course

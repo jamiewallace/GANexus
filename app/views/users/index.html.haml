@@ -1,16 +1,18 @@
-%h1 GA people
+%h2 GA people
 - if can? :manage, @user
   =link_to "Add a new user", new_user_path(@user)
 %p
 - for user in @users
-  %h2= link_to "#{user.first_name} #{user.last_name}", user
-  %p Role:
+  %h3= link_to "#{user.first_name} #{user.last_name}", user
+  %p
+  Role:
   = user.role
-  %p Email:
+  %p
+  Email:
   = user.email
-  / %p Password
-  / = user.password
-  %p Mobile
+  %p
+  Mobile:
   = user.mobile
-  %p ICE mobile
-  = user.ice_mobile
+  - if can? :manage, @user
+    %p ICE mobile
+    = user.ice_mobile
