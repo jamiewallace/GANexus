@@ -1,10 +1,7 @@
-/ = link_to "Courses", courses_path
-/ | 
-/ = link_to "Users", users_path
-/ |
-/ = link_to "Rooms", rooms_path
 %h1 Upcoming courses
-=link_to "Add new course", new_course_path
+- if can? :manage, @course
+  =link_to "Add a new course", new_course_path(@course)
+
 - for course in @courses
   %h2= link_to course.title, course
   %p Short Description
@@ -20,12 +17,3 @@
   %p End Time (each day)
   = course.end_time
 
-
-  / t.text :long_desc
-  / t.integer :cost
-  / t.integer :time_commit
-  / t.date :start_date
-  / t.date :end_date
-  / t.time :start_time
-  / t.time :end_time
-  / t.string :recurrence

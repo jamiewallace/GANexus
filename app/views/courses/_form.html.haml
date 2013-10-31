@@ -11,10 +11,9 @@
   .field
     = f.label :cost
     = f.text_field :cost 
-    - if current_user && current_user.role == 'staff' || 'admin'
-      .field
-        = f.label :room_id
-        = f.select :room_id, options_for_select(@rooms.map {|room| [room.name, room.id]})
+  .field
+    = f.label :room_id
+    = f.select :room_id, options_for_select(Room.all.map {|room| [room.name, room.id]})
   .field
     = f.label :start_date
     = f.date_select :start_date

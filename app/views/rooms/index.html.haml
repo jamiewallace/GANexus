@@ -1,6 +1,7 @@
 %h1 GA Rooms
+- if can? :manage, @room
+  =link_to "Add a new room", new_room_path(@room)
 %p
-= link_to "Add a new Room", new_room_path
 - for room in @rooms
   %h2= link_to room.name, room
   %p Room capacity:
