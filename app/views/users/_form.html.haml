@@ -5,12 +5,15 @@
   .field
     = f.label :last_name
     = f.text_field :last_name
-
-  - if current_user.role == 'admin' || (current_user.role == 'staff' && @user.role != 'admin')
-    .field
-      = f.label :role
-      = f.text_field :role
-
+    - if current_user
+      - if current_user.role == 'admin' 
+        .field
+          = f.label :role
+          = f.select :role, options_for_select(User.full_roles_list)
+      - elsif current_user.role == 'staff' 
+        .field
+          = f.label :role
+          = f.select :role, options_for_select(User.roles_list)      
   .field
     = f.label :email
     = f.text_field :email

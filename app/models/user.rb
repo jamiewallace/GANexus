@@ -12,7 +12,16 @@ class User < ActiveRecord::Base
 
   attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :mobile, :ice_mobile, :role
 
+  ROLES = [:admin, :staff, :tutor, :student]
 
+  def self.full_roles_list
+    ROLES
+  end
+
+  def self.roles_list
+    ROLES.delete(:admin)
+    ROLES
+  end
 
   def role?(r)
     self.role == r.to_s

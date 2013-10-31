@@ -9,6 +9,7 @@ class CoursesController < ApplicationController
 
   def new
     @course = Course.new
+    @rooms = Room.all
   end
 
   def show

@@ -1,21 +1,40 @@
 %h1= @course.title
-= link_to "Delete this course", @course, :confirm => 'Are you sure?', :method => :delete 
-|
-= link_to "Edit this course", edit_course_path(@course)
-%p Short Description
+- if can? :manage, @course
+  =link_to "Delete this course", @course, :confirm => 'Are you sure?', :method => :delete 
+- if can? :manage, @course
+  =link_to "Edit this course", edit_course_path(@course)
+%p 
+Short Description
 = @course.short_desc
-%p Long Description
+
+%p 
+Long Description
 = @course.long_desc
-%p Cost
+
+%p
+Cost:
 = @course.cost
-%p Start Date
+
+%p
+Room:
+= @course.room.name
+
+%p
+Start Date
 = @course.start_date
-%p End Date
+
+%p
+End Date
 = @course.end_date
-%p Start Time (each day)
-= @course.start_time
-%p End Time (each day)
-= @course.end_time
+
+%p
+Start Time (each day)
+= @course.start_time_full
+
+%p
+End Time (each day)
+= @course.end_time_full
+
 %p
 = link_to "Apply to this course", apply_path(@course)
 %h3 Users signed up to this course

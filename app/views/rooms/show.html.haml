@@ -1,6 +1,10 @@
 %h1= @room.name
-= link_to "Delete this room", @user, :confirm => 'Are you sure?', :method => :delete 
-|
-=link_to "Edit this room", edit_room_path(@room)
+- if can? :manage, @room
+  =link_to "Delete this room", @room, :confirm => 'Are you sure?', :method => :delete 
+- if can? :manage, @room
+  =link_to "Edit this room", edit_room_path(@room)
+
 %p Capacity:
 = @room.capacity
+
+
