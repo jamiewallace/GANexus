@@ -1,4 +1,7 @@
 %h1= @course.title
+= link_to "Delete this course", @course, :confirm => 'Are you sure?', :method => :delete 
+|
+= link_to "Edit this course", edit_course_path(@course)
 %p Short Description
 = @course.short_desc
 %p Long Description
@@ -13,3 +16,8 @@
 = @course.start_time
 %p End Time (each day)
 = @course.end_time
+%p
+= link_to "Apply to this course", apply_path(@course)
+%h3 Users signed up to this course
+- @course.users.each do |user|
+  %h3= link_to user.full_name, user

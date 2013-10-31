@@ -1,9 +1,11 @@
-= form_for @user do |f|
+%h1 Log in
+
+= form_tag sessions_path do 
   .field
-    = f.label :email
-    = f.text_field :email
+    = label_tag :email
+    = email_field_tag :email
   .field
-    = f.label :password
-    = f.text_field :password
+    = label_tag :password
+    = password_field_tag :password
   %p
-    = f.submit
+    = submit_tag "Log in"

@@ -10,6 +10,7 @@ Ganexus::Application.routes.draw do
   get "/signup", to: "users#new",         as: "signup"
   get "/login",  to: "sessions#new" ,     as: "login"
   delete "/logout", to: "sessions#destroy",  as: "logout"
+  get "/courses/:id/apply", to: "courses#apply", as: :apply
 
 
 end

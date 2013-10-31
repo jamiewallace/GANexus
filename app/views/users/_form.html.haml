@@ -5,15 +5,21 @@
   .field
     = f.label :last_name
     = f.text_field :last_name
-  .field
-    = f.label :role
-    = f.text_field :role
+
+  - if current_user.role == 'admin' || (current_user.role == 'staff' && @user.role != 'admin')
+    .field
+      = f.label :role
+      = f.text_field :role
+
   .field
     = f.label :email
     = f.text_field :email
   .field
     = f.label :password
-    = f.text_field :password
+    = f.password_field :password
+  .field
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation
   .field
     = f.label :mobile
     = f.text_field :mobile

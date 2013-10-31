@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+  # load_and_authorize_resource
 
   def index
     @rooms = Room.all
@@ -14,22 +15,23 @@ class RoomsController < ApplicationController
 
   def edit
     @room = Room.find params[:id]
-    redirect_to room_path
   end
 
   def create
     @room = Room.create params[:room]
-    redirect_to room_path
+    redirect_to rooms_path
   end
 
   def update
     @room = Room.find params[:id]
+    @room.update_attributes params[:room]
     redirect_to room_path
   end
 
   def destroy
     @room = Room.find params[:id]
     @room.destroy
+    redirect_to rooms_path
   end
 
 
