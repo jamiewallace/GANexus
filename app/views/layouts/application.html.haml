@@ -19,10 +19,13 @@
         %ul.nav.right-nav.nav-pills
           %li
             - if current_user
-              logged in as #{current_user.first_name},
-              = link_to 'Logout', logout_path, method: :delete
+              %p>
+                logged in as #{current_user.first_name},
+                = link_to 'Logout', logout_path, method: :delete
             -else
-              = link_to "Login", login_path
-              = link_to "Sign up", signup_path
+              %p>
+                = link_to "Login", login_path
+                |
+                = link_to "Sign up", signup_path
 %div.main
   = yield
