@@ -39,6 +39,7 @@ class CoursesController < ApplicationController
 
   def apply
     course = Course.find params[:id]
+    
     if course.user_can_apply?(current_user)
       course.users << current_user
       notice = 'Successfully applied'

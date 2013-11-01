@@ -36,7 +36,10 @@ End Time (each day):
 = @course.end_time_full
 
 %p
-= link_to "Apply to this course", apply_path(@course)
+-if current_user.present?
+  = link_to "Apply to this course", apply_path(@course)
+-else
+  = link_to "Sign up as a user to apply", new_user_path
 %hr
 %h4 Users signed up to this course
 - @course.users.each do |user|

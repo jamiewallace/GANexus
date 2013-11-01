@@ -8,12 +8,14 @@
 %p
 Role:
 = @user.role
-%p
-Email:
-= @user.email
-%p 
-Mobile:
-= @user.mobile
+- if can? :manage, @user
+  %p
+  Email:
+  = @user.email
+- if can? :manage, @user
+  %p 
+  Mobile:
+  = @user.mobile
 - if can? :manage, @user
   %p
   ICE mobile:
